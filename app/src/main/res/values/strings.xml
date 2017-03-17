@@ -8,4 +8,5 @@
 
     <string name="err_incorrect_login">Имя пользователя не найдено</string>
     <string name="err_incorrect_password">Пароль неверный</string>
+    <string name="title_activity_chat">ChatActivity</string>
 </resources>

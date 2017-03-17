@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/user_list"
+    android:background="#eee"
     tools:context="chat.another.yet.yachat.ui.fragment.UsersFragment"
     tools:showIn="@layout/activity_main">
-
 
 </android.support.v7.widget.RecyclerView>

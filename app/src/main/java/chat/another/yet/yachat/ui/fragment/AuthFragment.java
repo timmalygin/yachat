@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import chat.another.yet.yachat.R;
 import chat.another.yet.yachat.ui.activity.MainActivity;
-import chat.another.yet.yachat.user.Users;
+import chat.another.yet.yachat.utils.Helper;
 
 /**
  * Фрагмент с авторизацией
@@ -56,14 +56,14 @@ public class AuthFragment extends Fragment implements View.OnClickListener, Text
     public void onClick(View v) {
         // проверяем логн
         final String login = loginView.getText().toString();
-        if (!Users.isLoginCorrect(login)) {
+        if (!Helper.isLoginCorrect(login)) {
             errorView.setVisibility(View.VISIBLE);
             errorView.setText(R.string.err_incorrect_login);
             return;
         }
         // проверяем пароль
         final String password = pwdView.getText().toString();
-        if (!Users.isPasswordCorrect(password)) {
+        if (!Helper.isPasswordCorrect(password)) {
             errorView.setVisibility(View.VISIBLE);
             errorView.setText(R.string.err_incorrect_password);
             return;

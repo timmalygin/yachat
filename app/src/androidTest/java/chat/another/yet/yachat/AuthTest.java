@@ -19,7 +19,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import chat.another.yet.yachat.ui.activity.AuthActivity;
-import chat.another.yet.yachat.user.Users;
+import chat.another.yet.yachat.utils.Helper;
 
 /**
  * Проверяем авторизацию
@@ -54,13 +54,13 @@ public class AuthTest {
         // проверяем вьюху с ошибкой
         checkErrorShown(R.string.err_incorrect_login);
         // введем правильный логин
-        setTextOn(R.id.login, Users.LOGIN);
+        setTextOn(R.id.login, Helper.LOGIN);
         // проверяем что кнопка теперь доступна и нажимаем на нее
         clickOnButton();
         // проверяем вьюху с ошибкой
         checkErrorShown(R.string.err_incorrect_password);
 
-        setTextOn(R.id.password, Users.PASSWORD);
+        setTextOn(R.id.password, Helper.PASSWORD);
         // проверяем что кнопка теперь доступна и нажимаем на нее
         clickOnButton();
 
@@ -68,7 +68,7 @@ public class AuthTest {
         Espresso.onView(Matchers.allOf(
                 ViewMatchers.isAssignableFrom(TextView.class),
                 ViewMatchers.withParent(ViewMatchers.isAssignableFrom(Toolbar.class))))
-                .check(ViewAssertions.matches(ViewMatchers.withText(Users.LOGIN)));
+                .check(ViewAssertions.matches(ViewMatchers.withText(Helper.LOGIN)));
     }
 
     private void checkErrorShown(@StringRes int strId) {
