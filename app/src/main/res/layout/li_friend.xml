@@ -13,9 +13,9 @@
 
     <ImageView
         android:id="@+id/user_icon"
+        android:background="@drawable/circle"
         android:layout_width="@dimen/user_icon_size"
-        android:layout_height="@dimen/user_icon_size"
-        android:padding="6dp"/>
+        android:layout_height="@dimen/user_icon_size"/>
 
     <TextView
         android:id="@+id/user_name"

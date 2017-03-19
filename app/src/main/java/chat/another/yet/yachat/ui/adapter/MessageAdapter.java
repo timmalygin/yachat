@@ -76,7 +76,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageH
             } else {
                 avatarView.setVisibility(View.VISIBLE);
                 avatarView.setImageResource(message.companion.icon);
-                avatarView.setImageTintList(ColorStateList.valueOf(message.companion.color));
+                avatarView.setSupportBackgroundTintList(ColorStateList.valueOf(message.companion.color));
             }
         }
     }

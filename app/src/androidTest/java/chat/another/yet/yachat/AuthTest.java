@@ -35,6 +35,8 @@ import chat.another.yet.yachat.utils.Helper;
 @LargeTest
 public class AuthTest {
 
+    public static final String LOGIN = "user1";
+    public static final String PASSWORD = "password1";
     @Rule
     public ActivityTestRule<AuthActivity> authActivityRule =
             new ActivityTestRule<>(AuthActivity.class);
@@ -72,13 +74,13 @@ public class AuthTest {
         // проверяем вьюху с ошибкой
         checkErrorShown(R.string.err_incorrect_login);
         // введем правильный логин
-        setTextOn(R.id.login, Helper.LOGIN);
+        setTextOn(R.id.login, LOGIN);
         // проверяем что кнопка теперь доступна и нажимаем на нее
         clickOnButton();
         // проверяем вьюху с ошибкой
         checkErrorShown(R.string.err_incorrect_password);
 
-        setTextOn(R.id.password, Helper.PASSWORD);
+        setTextOn(R.id.password, PASSWORD);
         // проверяем что кнопка теперь доступна и нажимаем на нее
         clickOnButton();
         // проверяем что мы перешли на новую активити

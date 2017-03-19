@@ -48,7 +48,7 @@ public class SomeTest {
     public void init() {
         Intents.init();
         Intent intent = new Intent();
-        intent.putExtra(MainActivity.USERNAME, "login1");
+        intent.putExtra(MainActivity.USERNAME, "user1");
         mainActivityRule.launchActivity(intent);
         activity = mainActivityRule.getActivity();
         // получаем список друзей для текущего пользователя

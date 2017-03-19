@@ -20,11 +20,11 @@ import chat.another.yet.yachat.model.User;
  */
 public class Helper {
 
-    public static final String LOGIN = "user1";
-    public static final String PASSWORD = "password1";
+    private static final String LOGIN = "user1";
+    private static final String PASSWORD = "password1";
 
-    public static final String LOGIN2 = "user2";
-    public static final String PASSWORD2 = "password2";
+    private static final String LOGIN2 = "user2";
+    private static final String PASSWORD2 = "password2";
     public static final int COUNT_FRIENDS = 20;
 
     public static boolean isLoginCorrect(@NonNull String login) {
@@ -46,7 +46,8 @@ public class Helper {
         int[] icons = new int[]{
                 R.drawable.ic_user_1, R.drawable.ic_user_2, R.drawable.ic_user_3,
                 R.drawable.ic_user_4, R.drawable.ic_user_5, R.drawable.ic_user_6,
-                R.drawable.ic_user_7
+                R.drawable.ic_user_7, R.drawable.ic_user_8, R.drawable.ic_user_9,
+                R.drawable.ic_user_10, R.drawable.ic_user_11, R.drawable.ic_user_12
         };
 
         int[] colors = new int[]{
