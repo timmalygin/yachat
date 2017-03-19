@@ -23,6 +23,7 @@ import chat.another.yet.yachat.utils.Helper;
  */
 public class AuthFragment extends Fragment implements View.OnClickListener, TextWatcher {
 
+    public static final boolean FAST = true;
     private TextView errorView;
     private EditText loginView;
     private EditText pwdView;
@@ -56,14 +57,14 @@ public class AuthFragment extends Fragment implements View.OnClickListener, Text
     public void onClick(View v) {
         // проверяем логн
         final String login = loginView.getText().toString();
-        if (!Helper.isLoginCorrect(login)) {
+        if (!FAST && !Helper.isLoginCorrect(login)) {
             errorView.setVisibility(View.VISIBLE);
             errorView.setText(R.string.err_incorrect_login);
             return;
         }
         // проверяем пароль
         final String password = pwdView.getText().toString();
-        if (!Helper.isPasswordCorrect(password)) {
+        if (!FAST && !Helper.isPasswordCorrect(password)) {
             errorView.setVisibility(View.VISIBLE);
             errorView.setText(R.string.err_incorrect_password);
             return;
@@ -89,6 +90,6 @@ public class AuthFragment extends Fragment implements View.OnClickListener, Text
     }
 
     private void checkEnabledButton() {
-        loginButton.setEnabled(loginView.getText().length() > 0 && pwdView.getText().length() > 0);
+        loginButton.setEnabled(FAST || loginView.getText().length() > 0 && pwdView.getText().length() > 0);
     }
 }

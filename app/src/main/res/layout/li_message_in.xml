@@ -19,6 +19,7 @@
         android:layout_marginRight="8dp"
         android:background="@drawable/rect"
         android:gravity="right"
+        android:textSize="@dimen/text_size_message"
         android:paddingBottom="4dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"

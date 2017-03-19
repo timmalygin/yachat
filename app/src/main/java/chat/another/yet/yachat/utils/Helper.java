@@ -100,7 +100,7 @@ public class Helper {
         }
 
         messages = new ArrayList<>();
-        String[] simpleMessages = new String[]{
+        String[] simpleQuestions = new String[]{
                 "Привет", "Здарово!", "АЧоДелаешь?", "Как твое ничо?", "Пойдешь на лекцию?", "Да",
                 "Норм", "Как семья?", "Ничего", "Горы, только горы", "как отпуск?", "Винипух",
                 "Погуляем?", "Не могу", "У меня пельмени стынут"
@@ -109,8 +109,8 @@ public class Helper {
         Random random = ThreadLocalRandom.current();
         int countMessages = (random.nextInt(COUNT_FRIENDS) == companion.id) ? 10_000 : 10;
         for (int i = 0; i < countMessages; i++) {
-            int indexOfText = random.nextInt(simpleMessages.length);
-            Message message = new Message(companion, random.nextBoolean(), simpleMessages[indexOfText]);
+            int indexOfText = random.nextInt(simpleQuestions.length);
+            Message message = new Message(companion, random.nextBoolean(), simpleQuestions[indexOfText]);
             messages.add(message);
         }
         messagesMap.put(companion, messages);
