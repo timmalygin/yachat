@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/users_list_fragment"
-        android:name="chat.another.yet.yachat.ui.fragment.UsersFragment"
+        android:name="chat.another.yet.yachat.ui.fragment.FriendsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"

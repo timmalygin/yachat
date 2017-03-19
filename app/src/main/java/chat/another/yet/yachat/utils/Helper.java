@@ -25,7 +25,7 @@ public class Helper {
 
     public static final String LOGIN2 = "user2";
     public static final String PASSWORD2 = "password2";
-    public static final int COUNT_FRIENDS = 10_000;
+    public static final int COUNT_FRIENDS = 20;
 
     public static boolean isLoginCorrect(@NonNull String login) {
         return LOGIN.equals(login) || LOGIN2.equals(login);
@@ -62,7 +62,7 @@ public class Helper {
 
         String[] surname = new String[]{
                 " Пупкин", " Недалекович", " II", " IV", " I", " Путин", " Мстиславич", " Грей",
-                " Велокович", " Чудотворец", " Бээ", " Нормал", " фри"
+                " Велокович", " Чудотворец", " Бээ", " Нормал", " фри", "III"
         };
 
         for (int i = 0; i < COUNT_FRIENDS; i++) {

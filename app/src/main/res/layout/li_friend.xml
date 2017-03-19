@@ -3,6 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
+              android:id="@+id/user_row"
               android:background="@drawable/rect"
               android:layout_margin="4dp"
               android:paddingBottom="8dp"

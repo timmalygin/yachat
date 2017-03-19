@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/user_list"
-    android:background="#eee"
-    tools:context="chat.another.yet.yachat.ui.fragment.UsersFragment"
-    tools:showIn="@layout/activity_main">
+    >
 
-</android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/friends_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#eee"
+        tools:context="chat.another.yet.yachat.ui.fragment.FriendsFragment"
+        tools:showIn="@layout/activity_main">
+
+    </android.support.v7.widget.RecyclerView>
+</FrameLayout>

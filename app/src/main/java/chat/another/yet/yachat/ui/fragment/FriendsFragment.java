@@ -11,12 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import chat.another.yet.yachat.R;
-import chat.another.yet.yachat.ui.adapter.UserAdapter;
+import chat.another.yet.yachat.ui.adapter.FriendsAdapter;
 
 /**
- * Фрагмент со списком пользователей
+ * Фрагмент со списком Друзей
  */
-public class UsersFragment extends Fragment {
+public class FriendsFragment extends Fragment {
 
     private RecyclerView usersView;
     private String login;
@@ -30,7 +30,7 @@ public class UsersFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        usersView = (RecyclerView) view.findViewById(R.id.user_list);
+        usersView = (RecyclerView) view.findViewById(R.id.friends_list);
         usersView.setLayoutManager(new LinearLayoutManager(getContext()));
         updateUi();
     }
@@ -44,7 +44,7 @@ public class UsersFragment extends Fragment {
         if (usersView == null || login == null) {
             return;
         }
-        usersView.setAdapter(new UserAdapter(this.login, (OnSelectUserListener) getActivity()));
+        usersView.setAdapter(new FriendsAdapter(this.login, (OnSelectUserListener) getActivity()));
     }
 
 }

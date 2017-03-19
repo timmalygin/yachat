@@ -1,11 +1,15 @@
 package chat.another.yet.yachat;
 
+import android.content.ComponentName;
+import android.content.Intent;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.assertion.ViewAssertions;
+import android.support.test.espresso.intent.Intents;
+import android.support.test.espresso.intent.matcher.IntentMatchers;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -14,11 +18,14 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import org.hamcrest.Matchers;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import chat.another.yet.yachat.ui.activity.AuthActivity;
+import chat.another.yet.yachat.ui.activity.MainActivity;
 import chat.another.yet.yachat.utils.Helper;
 
 /**
@@ -29,7 +36,18 @@ import chat.another.yet.yachat.utils.Helper;
 public class AuthTest {
 
     @Rule
-    public ActivityTestRule<AuthActivity> authActivityRule = new ActivityTestRule<AuthActivity>(AuthActivity.class);
+    public ActivityTestRule<AuthActivity> authActivityRule =
+            new ActivityTestRule<>(AuthActivity.class);
+
+    @Before
+    public void init(){
+        Intents.init();
+    }
+
+    @After
+    public void restore(){
+        Intents.release();
+    }
 
     /**
      * Тест проверяет ввод некорретных данных, ввод корректного логина и некорректного пароля,
@@ -63,12 +81,8 @@ public class AuthTest {
         setTextOn(R.id.password, Helper.PASSWORD);
         // проверяем что кнопка теперь доступна и нажимаем на нее
         clickOnButton();
-
         // проверяем что мы перешли на новую активити
-        Espresso.onView(Matchers.allOf(
-                ViewMatchers.isAssignableFrom(TextView.class),
-                ViewMatchers.withParent(ViewMatchers.isAssignableFrom(Toolbar.class))))
-                .check(ViewAssertions.matches(ViewMatchers.withText(Helper.LOGIN)));
+        Intents.intended(IntentMatchers.hasComponent(MainActivity.class.getName()));
     }
 
     private void checkErrorShown(@StringRes int strId) {
