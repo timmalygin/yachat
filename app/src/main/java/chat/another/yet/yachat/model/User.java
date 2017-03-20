@@ -31,15 +31,14 @@ public class User implements Parcelable {
 
     @Override
     public boolean equals(Object o) {
-        return o == this;
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        User user = (User) o;
-//
-//        if (id != user.id) return false;
-//
-//        return true;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (id != user.id) return false;
+
+        return true;
     }
 
     @Override

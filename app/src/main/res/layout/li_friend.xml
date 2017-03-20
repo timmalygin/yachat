@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/user_row"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:orientation="horizontal"
-              android:id="@+id/user_row"
-              android:background="@drawable/rect"
               android:layout_margin="4dp"
+              android:background="@drawable/bgr_friend"
+              android:orientation="horizontal"
               android:paddingBottom="8dp"
               android:paddingLeft="16dp"
               android:paddingRight="8dp"
@@ -13,9 +13,9 @@
 
     <ImageView
         android:id="@+id/user_icon"
-        android:background="@drawable/circle"
         android:layout_width="@dimen/user_icon_size"
-        android:layout_height="@dimen/user_icon_size"/>
+        android:layout_height="@dimen/user_icon_size"
+        android:background="@drawable/circle"/>
 
     <TextView
         android:id="@+id/user_name"

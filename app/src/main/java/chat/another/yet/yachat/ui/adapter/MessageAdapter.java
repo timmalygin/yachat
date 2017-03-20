@@ -55,6 +55,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageH
         return messages.get(position).incomming ? R.layout.li_message_in : R.layout.li_message_out;
     }
 
+    public void addNewMessage(@NonNull Message message) {
+        messages.add(message);
+        notifyItemInserted(messages.size());
+    }
+
     @Override
     public int getItemCount() {
         return messages.size();
