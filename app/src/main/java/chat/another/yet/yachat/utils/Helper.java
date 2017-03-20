@@ -26,6 +26,7 @@ public class Helper {
     private static final String LOGIN2 = "user2";
     private static final String PASSWORD2 = "password2";
     public static final int COUNT_FRIENDS = 20;
+    private static int badId = -1;
 
     public static boolean isLoginCorrect(@NonNull String login) {
         return LOGIN.equals(login) || LOGIN2.equals(login);
@@ -94,8 +95,12 @@ public class Helper {
     private static Map<User, List<Message>> messagesMap = new HashMap<>();
 
     public static List<Message> getMessageFor(@NonNull User companion) {
+        Random random = ThreadLocalRandom.current();
+        if (badId == -1) {
+            badId = random.nextInt(COUNT_FRIENDS);
+        }
         List<Message> messages = Helper.messagesMap.get(companion);
-        if (messages != null) {
+        if (companion.id != badId && messages != null) {
             return messages;
         }
 
@@ -105,10 +110,8 @@ public class Helper {
                 "Норм", "Как семья?", "Ничего", "Горы, только горы", "как отпуск?", "Винипух",
                 "Погуляем?", "Не могу", "У меня пельмени стынут"
         };
-
-        Random random = ThreadLocalRandom.current();
-        int countMessages = (random.nextInt(COUNT_FRIENDS) == companion.id) ? 10_000 : 10;
-        for (int i = 0; i < countMessages; i++) {
+        final int count = random.nextInt(40) + 10; // (50; 10]
+        for (int i = 0; i < count; i++) {
             int indexOfText = random.nextInt(simpleQuestions.length);
             Message message = new Message(companion, random.nextBoolean(), simpleQuestions[indexOfText]);
             messages.add(message);
