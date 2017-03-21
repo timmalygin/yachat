@@ -8,7 +8,6 @@
 
     <ImageView
         android:id="@+id/user_icon"
-        android:background="@drawable/circle"
         android:layout_width="@dimen/user_message_icon_size"
         android:layout_height="@dimen/user_message_icon_size"/>
 

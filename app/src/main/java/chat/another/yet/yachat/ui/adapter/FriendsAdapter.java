@@ -67,7 +67,6 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendHo
             itemView.setTag(friend.id);
             iconView.setImageResource(user.icon);
             nameView.setText(user.name);
-            iconView.setBackgroundTintList(ColorStateList.valueOf(user.color));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
