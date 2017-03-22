@@ -13,8 +13,8 @@ import java.util.concurrent.ThreadLocalRandom;
 import chat.another.yet.yachat.R;
 import chat.another.yet.yachat.model.User;
 import chat.another.yet.yachat.ui.fragment.ChatFragment;
-import chat.another.yet.yachat.ui.fragment.OnSelectUserListener;
 import chat.another.yet.yachat.ui.fragment.FriendsFragment;
+import chat.another.yet.yachat.ui.fragment.OnSelectUserListener;
 import chat.another.yet.yachat.utils.Helper;
 
 public class MainActivity extends AppCompatActivity implements OnSelectUserListener {
@@ -28,16 +28,28 @@ public class MainActivity extends AppCompatActivity implements OnSelectUserListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Bundle extras = getIntent().getExtras();
-        userName = extras.getString(USERNAME);
+        if (savedInstanceState != null) {
+            userName = savedInstanceState.getString(USERNAME);
+        } else {
+            final Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                userName = extras.getString(USERNAME);
+            }
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(userName);
         setSupportActionBar(toolbar);
 
-        if(savedInstanceState==null) {
+        if (savedInstanceState == null) {
             final FriendsFragment userListFragment = (FriendsFragment) getSupportFragmentManager().findFragmentById(R.id.users_list_fragment);
             userListFragment.setLogin(userName);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(USERNAME, userName);
     }
 
     @Override
@@ -53,12 +65,12 @@ public class MainActivity extends AppCompatActivity implements OnSelectUserListe
     }
 
     @VisibleForTesting
-    public List<User> getFriendsList(){
+    public List<User> getFriendsList() {
         return Helper.getFriendFor(userName);
     }
 
     @VisibleForTesting
-    public boolean isTablet(){
-        return getSupportFragmentManager().findFragmentById(R.id.chat_fragment)!=null;
+    public boolean isTablet() {
+        return getSupportFragmentManager().findFragmentById(R.id.chat_fragment) != null;
     }
 }

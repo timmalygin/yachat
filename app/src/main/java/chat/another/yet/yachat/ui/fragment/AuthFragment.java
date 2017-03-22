@@ -23,7 +23,7 @@ import chat.another.yet.yachat.utils.Helper;
  */
 public class AuthFragment extends Fragment implements View.OnClickListener, TextWatcher {
 
-    public static final boolean FAST = true;
+    public static final boolean FAST = false;
     private TextView errorView;
     private EditText loginView;
     private EditText pwdView;
