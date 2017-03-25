@@ -25,7 +25,7 @@ public class Helper {
 
     private static final String LOGIN2 = "user2";
     private static final String PASSWORD2 = "password2";
-    public static final int COUNT_FRIENDS = 20;
+    public static final int COUNT_FRIENDS = 100;
     private static int badId = -1;
 
     public static boolean isLoginCorrect(@NonNull String login) {

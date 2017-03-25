@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -72,5 +74,22 @@ public class MainActivity extends AppCompatActivity implements OnSelectUserListe
     @VisibleForTesting
     public boolean isTablet() {
         return getSupportFragmentManager().findFragmentById(R.id.chat_fragment) != null;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.exit_menu:
+                finish();
+                startActivity(new Intent(this, AuthActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

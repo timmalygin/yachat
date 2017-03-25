@@ -2,8 +2,6 @@ package chat.another.yet.yachat;
 
 import android.content.Intent;
 import android.support.test.espresso.Espresso;
-import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.ViewAssertion;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.espresso.contrib.RecyclerViewActions;
@@ -19,6 +17,7 @@ import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,12 +25,14 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
+import chat.another.yet.yachat.model.Message;
 import chat.another.yet.yachat.model.User;
 import chat.another.yet.yachat.ui.activity.MainActivity;
 import chat.another.yet.yachat.ui.adapter.FriendsAdapter;
+import chat.another.yet.yachat.ui.adapter.MessageAdapter;
 
 /**
- * Проверяем авторизацию
+ * Класс для решения задания
  */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -69,7 +70,7 @@ public class SomeTest {
         for (User friend : friends) {
             // скроллим до нужного пользователя, чтобы он был виден на экране
             Espresso.onView(ViewMatchers.withId(R.id.friends_list))
-                    .perform(RecyclerViewActions.scrollToHolder(findHolderWithText(friend)));
+                    .perform(RecyclerViewActions.scrollToHolder(findFriendHolderWithFriend(friend)));
             // нажимаем на него
             Espresso.onView(ViewMatchers.withTagValue(Matchers.<Object>is(Integer.valueOf(friend.id))))
                     .perform(ViewActions.click());
@@ -83,9 +84,30 @@ public class SomeTest {
     }
 
     /**
-     * Matches the {@link CustomAdapter.ViewHolder}s in the middle of the list.
+     * ищем холдер отображающий текст
+     *
+     * @param message - сообщение которое ищем
      */
-    private static Matcher<FriendsAdapter.FriendHolder> findHolderWithText(final User friend) {
+    private static Matcher<MessageAdapter.MessageHolder> findMessageHolderWithMessage(final Message message) {
+        return new TypeSafeMatcher<MessageAdapter.MessageHolder>() {
+            @Override
+            protected boolean matchesSafely(MessageAdapter.MessageHolder item) {
+                return item.is(message);
+            }
+
+            @Override
+            public void describeTo(Description description) {
+                description.appendText(message.message);
+            }
+        };
+    }
+
+    /**
+     * Ищем холдер, который отображает переданного друга
+     *
+     * @param friend - друг, который отображается
+     */
+    private static Matcher<FriendsAdapter.FriendHolder> findFriendHolderWithFriend(final User friend) {
         return new TypeSafeMatcher<FriendsAdapter.FriendHolder>() {
             @Override
             public void describeTo(Description description) {

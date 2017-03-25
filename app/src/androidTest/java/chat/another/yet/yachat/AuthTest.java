@@ -1,7 +1,5 @@
 package chat.another.yet.yachat;
 
-import android.content.ComponentName;
-import android.content.Intent;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
@@ -14,8 +12,6 @@ import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.support.v7.widget.Toolbar;
-import android.widget.TextView;
 
 import org.hamcrest.Matchers;
 import org.junit.After;
@@ -26,7 +22,6 @@ import org.junit.runner.RunWith;
 
 import chat.another.yet.yachat.ui.activity.AuthActivity;
 import chat.another.yet.yachat.ui.activity.MainActivity;
-import chat.another.yet.yachat.utils.Helper;
 
 /**
  * Проверяем авторизацию
@@ -42,12 +37,12 @@ public class AuthTest {
             new ActivityTestRule<>(AuthActivity.class);
 
     @Before
-    public void init(){
+    public void init() {
         Intents.init();
     }
 
     @After
-    public void restore(){
+    public void restore() {
         Intents.release();
     }
 
@@ -85,6 +80,13 @@ public class AuthTest {
         clickOnButton();
         // проверяем что мы перешли на новую активити
         Intents.intended(IntentMatchers.hasComponent(MainActivity.class.getName()));
+
+        Espresso.openActionBarOverflowOrOptionsMenu(authActivityRule.getActivity());
+
+        Espresso.onView(ViewMatchers.withText(R.string.exit))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+                .perform(ViewActions.click());
+        Intents.intended(IntentMatchers.hasComponent(AuthActivity.class.getName()));
     }
 
     private void checkErrorShown(@StringRes int strId) {
